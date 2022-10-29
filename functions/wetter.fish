@@ -2,7 +2,7 @@ function wetter
 
     if [ -z "$argv" ]; # No arguments
         echo "No arguments supplied. Checking your current location..."
-        set -l loc (corelocationcli -format "%%address" | head -n 2 | tail -n 1 | awk '{for (i=2; i<NF; i++) printf $i " "; print $NF}')
+        set -l loc (corelocationcli --format "%address" | head -n 2 | tail -n 1 | awk '{for (i=2; i<NF; i++) printf $i " "; print $NF}')
         echo "Your current location is <$loc>"
         command curl "http://wttr.in/$loc"
         return
